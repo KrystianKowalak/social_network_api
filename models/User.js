@@ -14,6 +14,18 @@ const userSchema = new Schema(
       required: true,
       match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/, "Not a valid email!"]
     },
+    thoughts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "thought"
+      }
+    ],
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "user"
+      }
+    ]
   },
   {
     toJSON: {
@@ -23,20 +35,11 @@ const userSchema = new Schema(
   }
 );
 
-userSchema
-  .virtual('fullName')
-  // Getter
+userSchema.virtual("friendCount")
   .get(function () {
-    return `${this.first} ${this.last}`;
+    return this.friends.length;
   })
-  // Setter to set the first and last name
-  .set(function (v) {
-    const first = v.split(' ')[0];
-    const last = v.split(' ')[1];
-    this.set({ first, last });
-  });
 
-// Initialize our User model
 const User = model("user", userSchema);
 
 module.exports = User;
