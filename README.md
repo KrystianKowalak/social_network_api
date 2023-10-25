@@ -1,5 +1,5 @@
 # Social Network API
-https://github.com/KrystianKowalak/social_network_api/assets/63071475/781fd93d-54bc-4de6-980c-7f1e5568e545
+https://github.com/KrystianKowalak/social_network_api/assets/63071475/1136ba38-601e-403d-bde9-df1a10d32a73
 
  ## Description
   An node application for keeping track of friends, their thoughts and reactions on a social media network.
